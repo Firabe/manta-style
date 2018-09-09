@@ -23,9 +23,7 @@ import IntersectionType from './types/IntersectionType';
 import ParenthesizedType from './types/ParenthesizedType';
 import ObjectKeyword from './types/ObjectKeyword';
 import ArrayLiteral from './types/ArrayLiteral';
-import Shape from './types/Shape';
 import NullableType from './types/NullableType';
-import NonMaybeType from './types/NonMaybeType';
 import { MantaStyleAnnotation, AnnotationAst, Type } from '@manta-style/core';
 
 export type TypeAliasDeclarationFactory = () => TypeAliasDeclaration;
@@ -111,14 +109,6 @@ class MantaStyle {
 
   public static MantaAnnotation(annotation: AnnotationAst) {
     return new MantaStyleAnnotation(annotation);
-  }
-
-  // Flow Specific
-  public static ShapeOf(type: Type) {
-    return new Shape(type);
-  }
-  public static NonMaybeType(type: Type) {
-    return new NonMaybeType(type);
   }
 }
 
