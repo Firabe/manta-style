@@ -1,5 +1,9 @@
 import { parse } from 'handlebars';
-import { Annotation } from '@manta-style/core';
+import {
+  Annotation,
+  AnnotationExpression,
+  AnnotationLiteral,
+} from '@manta-style/core';
 
 export function parseAnnotationFromString(handlebarString: string): Annotation {
   const mustacheStatement = parse(handlebarString).body[0];
@@ -21,43 +25,24 @@ function simplifyAst(statement: hbs.AST.Expression): Annotation {
           hash[hashPair.key] = simplifyAst(hashPair.value);
         }
       }
-      return {
-        type: 'expression',
-        name: fnName,
-        params,
-        hash,
-      };
+      return new AnnotationExpression(fnName, params, hash);
     } else {
       throw new Error(
         'MustacheStatement with Literal key instead of PathExpression.',
       );
     }
   } else if (isPathExpression(statement)) {
-    return {
-      type: 'expression',
-      name: statement.original,
-      params: [],
-      hash: {},
-    };
+    return new AnnotationExpression(statement.original, [], {});
   } else if (
     isStringLiteral(statement) ||
     isBooleanLiteral(statement) ||
     isNumberLiteral(statement)
   ) {
-    return {
-      type: 'literal',
-      value: statement.value,
-    };
+    return new AnnotationLiteral(statement.value);
   } else if (isUndefinedLiteral(statement)) {
-    return {
-      type: 'literal',
-      value: undefined,
-    };
+    return new AnnotationLiteral(undefined);
   } else if (isNullLiteral(statement)) {
-    return {
-      type: 'literal',
-      value: null,
-    };
+    return new AnnotationLiteral(null);
   } else {
     throw new Error('Unsupported Handlbars Annotation');
   }

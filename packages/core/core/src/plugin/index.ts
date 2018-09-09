@@ -1,4 +1,8 @@
-import { Annotation } from '../utils/annotation';
+import {
+  Annotation,
+  AnnotationExpression,
+  AnnotationLiteral,
+} from '../utils/annotation';
 
 const PLUGIN_PREFIX = ['@manta-style/', 'manta-style-'];
 
