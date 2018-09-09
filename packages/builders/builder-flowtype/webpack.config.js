@@ -15,10 +15,10 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
-  // externals: {
-  //   typescript: 'typescript',
-  //   '@babel/core': '@babel/core',
-  // },
+  externals: {
+    '@babel/core': '@babel/core',
+    '@manta-style/annoatation-parser': '@manta-style/annoatation-parser',
+  },
   module: {
     rules: [
       {

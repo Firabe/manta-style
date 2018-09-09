@@ -13,6 +13,9 @@ module.exports = {
     globalObject: "typeof self !== 'undefined' ? self : this",
     umdNamedDefine: true,
   },
+  externals: {
+    '@manta-style/annoatation-parser': '@manta-style/annoatation-parser',
+  },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {

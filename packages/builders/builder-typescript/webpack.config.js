@@ -19,6 +19,7 @@ module.exports = {
     typescript: 'typescript',
     glob: 'glob',
     '@babel/core': '@babel/core',
+    '@manta-style/annoatation-parser': '@manta-style/annoatation-parser',
   },
   module: {
     rules: [
