@@ -1,6 +1,6 @@
-import { AnnotationAst, parseAnnotationFromString } from './parser';
+import { parseAnnotationFromString } from './parser';
 
-export { AnnotationAst, parseAnnotationFromString };
+export { parseAnnotationFromString };
 export const JsdocKey = 'mantastyle';
 
 const MANTA_STYLE_ANNOTATION_REGEX = new RegExp(
